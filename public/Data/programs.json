@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "ahmed123",
+      "email": "ahmed@example.com",
+      "password": "hashed_password_1",
+      "isLogin": true,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.ahmed.payload"
+    },
+    {
+      "id": 2,
+      "username": "sara456",
+      "email": "sara@example.com",
+      "password": "hashed_password_2",
+      "isLogin": true,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.sara.payload"
+    },
+    {
+      "id": 3,
+      "username": "mohamed789",
+      "email": "mohamed@example.com",
+      "password": "hashed_password_3",
+      "isLogin": true,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mohamed.payload"
+    }
+  ],
+  "programs" : [
+    {
+      "id": 1,
+      "programName": "تدريب مهارات القيادة",
+      "status": "مكتمل",
+      "trainees": "10 متدرب",
+      "date": "14/06/21",
+      "category": "دورات قياده"
+    },
+    {
+      "id": 2,
+      "programName": "تدريب مهارات الاداره",
+      "status": "قيد التنفيذ",
+      "trainees": "30 متدرب",
+      "date": "20/06/21",
+      "category": "دورات اداره"
+    },
+    {
+      "id": 3,
+      "programName": "تدريب مهارات الكتابة",
+      "status": "لم يبدأ بعد",
+      "trainees": "20 متدرب",
+      "date": "22/06/21",
+      "category": "دورات كتابية"
+    },
+    {
+      "id": 4,
+      "programName": "تدريب مهارات التعلم",
+      "status": "إنتهي",
+      "trainees": "100 متدرب",
+      "date": "15/07/25",
+      "category": "دورات التعليم"
+    },
+    {
+      "id": 5,
+      "programName": "تدريب مهارات البحث",
+      "status": "مكتمل",
+      "trainees": "25 متدرب",
+      "date": "5/06/25",
+      "category": "دورات البحث"
+    }
+  ]
+}
