@@ -13,7 +13,7 @@ function ProgramsTable() {
   const [programFilter, setProgramFilter] = useState<Program[]>([]);
   const getAllProgram = async () => {
     try {
-      const res = await fetch("/Data/programs.json"); // ✅ fetch from /public
+      const res = await fetch("/Data/programs.json"); 
       const data = await res.json();
       console.log(data.programs);
       setPrograms(data.programs);
@@ -179,108 +179,6 @@ function ProgramsTable() {
       </div>
       <div className="flex flex-col md:px-10 pt-12 pb-6 mt-5 w-full text-sm font-bold text-gray-700  rounded-2xl shadow-sm max-w-full">
         <div className="w-full md:px-10 pt-12 pb-6 mt-5 bg-white rounded-2xl shadow-sm text-sm font-bold text-gray-700 max-w-[1593px]">
-          {/* <div className="grid grid-cols-5 gap-4 px-10 text-slate-400 text-center max-md:grid-cols-2">
-            <div>اسم البرنامج</div>
-            <div>حالة البرنامج</div>
-            <div>عدد المشاركين</div>
-            <div>تاريخ البدء</div>
-            <div>الإجراءات</div>
-          </div>
-
-          <div className="border-t border-slate-200 my-4 w-full"></div>
-
-          <div className="grid grid-cols-5 gap-4 items-center text-center px-10 max-md:grid-cols-2">
-            <div className="text-right">تدريب مهارات القيادة</div>
-            <div className="px-4 py-1.5 bg-green-400 text-white rounded-xl">
-              مكتمل
-            </div>
-            <div>40 متدرب</div>
-            <div>14/06/21</div>
-
-            <div className="flex gap-4 items-center justify-center text-xs">
-              <div className="flex items-center gap-1 text-red-500">
-                <svg
-                  width="11"
-                  height="13"
-                  viewBox="0 0 11 13"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M1.13677 10.875C1.13677 11.5625 1.75729 12.125 2.5157 12.125H8.0314C8.7898 12.125 9.41032 11.5625 9.41032 10.875V4.625C9.41032 3.9375 8.7898 3.375 8.0314 3.375H2.5157C1.75729 3.375 1.13677 3.9375 1.13677 4.625V10.875ZM9.41032 1.5H7.68666L7.19715 1.05625C7.07304 0.94375 6.89378 0.875 6.71452 0.875H3.83257C3.65331 0.875 3.47405 0.94375 3.34995 1.05625L2.86043 1.5H1.13677C0.757569 1.5 0.447311 1.78125 0.447311 2.125C0.447311 2.46875 0.757569 2.75 1.13677 2.75H9.41032C9.78952 2.75 10.0998 2.46875 10.0998 2.125C10.0998 1.78125 9.78952 1.5 9.41032 1.5Z"
-                    fill="#E53E3E"
-                  />
-                </svg>
-                <span>DELETE</span>
-              </div>
-              <div className="flex items-center gap-1">
-                <span>EDIT</span>
-                <svg
-                  width="11"
-                  height="10"
-                  viewBox="0 0 11 10"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M0.636841 7.47905V8.99905C0.636841 9.13905 0.758186 9.24905 0.912626 9.24905H2.5894C2.6611 9.24905 2.73281 9.22405 2.78245 9.17405L8.80559 3.71905L6.7372 1.84405L0.719576 7.29905C0.664419 7.34905 0.636841 7.40905 0.636841 7.47905ZM10.4051 2.26905C10.6203 2.07405 10.6203 1.75905 10.4051 1.56405L9.11447 0.394053C8.89936 0.199053 8.55187 0.199053 8.33675 0.394053L7.32738 1.30905L9.39577 3.18405L10.4051 2.26905V2.26905Z"
-                    fill="#2D3748"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div> */}
-
-          {/* {programs &&
-            programs?.map((program: Program, index: number) => {
-              const isLast = index === programs.length - 1;
-              return (
-                <div
-                  key={program.id}
-                  className="grid grid-cols-5 gap-4 items-center text-center px-10 max-md:grid-cols-2 my-3"
-                >
-                  <div className="text-right">{program?.programName}</div>
-                  <div className="px-4 py-1.5 bg-green-400 text-white rounded-xl">
-                    مكتمل
-                  </div>
-                  <div>{program?.trainees}</div>
-                  <div>{program?.date}</div>
-
-                  <div className="flex gap-4 items-center justify-center text-xs">
-                    <div className="flex items-center gap-1 text-red-500">
-                      <svg
-                        width="11"
-                        height="13"
-                        viewBox="0 0 11 13"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M1.13677 10.875C1.13677 11.5625 1.75729 12.125 2.5157 12.125H8.0314C8.7898 12.125 9.41032 11.5625 9.41032 10.875V4.625C9.41032 3.9375 8.7898 3.375 8.0314 3.375H2.5157C1.75729 3.375 1.13677 3.9375 1.13677 4.625V10.875ZM9.41032 1.5H7.68666L7.19715 1.05625C7.07304 0.94375 6.89378 0.875 6.71452 0.875H3.83257C3.65331 0.875 3.47405 0.94375 3.34995 1.05625L2.86043 1.5H1.13677C0.757569 1.5 0.447311 1.78125 0.447311 2.125C0.447311 2.46875 0.757569 2.75 1.13677 2.75H9.41032C9.78952 2.75 10.0998 2.46875 10.0998 2.125C10.0998 1.78125 9.78952 1.5 9.41032 1.5Z"
-                          fill="#E53E3E"
-                        />
-                      </svg>
-                      <span>DELETE</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <span>EDIT</span>
-                      <svg
-                        width="11"
-                        height="10"
-                        viewBox="0 0 11 10"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M0.636841 7.47905V8.99905C0.636841 9.13905 0.758186 9.24905 0.912626 9.24905H2.5894C2.6611 9.24905 2.73281 9.22405 2.78245 9.17405L8.80559 3.71905L6.7372 1.84405L0.719576 7.29905C0.664419 7.34905 0.636841 7.40905 0.636841 7.47905ZM10.4051 2.26905C10.6203 2.07405 10.6203 1.75905 10.4051 1.56405L9.11447 0.394053C8.89936 0.199053 8.55187 0.199053 8.33675 0.394053L7.32738 1.30905L9.39577 3.18405L10.4051 2.26905V2.26905Z"
-                          fill="#2D3748"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-              );
-            })} */}
           <div className="overflow-x-auto rounded-lg shadow-md">
             <table className="min-w-full text-sm text-center ">
               <thead className="bg-gray-100 text-slate-500 px-1">

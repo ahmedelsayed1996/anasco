@@ -30,6 +30,8 @@ export default function Home() {
       if (foundUser) {
         localStorage.setItem("token", foundUser.token);
         myRoute.push("/dashboard");
+      } else {
+        throw Error()
       }
     } catch (error) {
       setError("البريد الالكتروني او كلمه المرور غير صحيحة");
@@ -146,7 +148,7 @@ export default function Home() {
               </small>
             </div>
             <button className="bg-redColor text-white text-[clamp(1rem,1vw,2.5rem)] px-10 py-2 rounded-3xl">
-              إنشاء حساب
+              تسجيل الدخول
             </button>
             {/* Set Error Email & Password */}
             {error && (
