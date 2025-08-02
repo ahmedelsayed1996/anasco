@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={ibmPlexSansArabic.className}>
-      <body dir="rtl" className={`${ibmPlexSansArabic.variable} font-arabic`}>
+      <body dir="rtl" className={`${ibmPlexSansArabic.variable} font-arabic`} suppressHydrationWarning>
         {children}
       </body>
     </html>

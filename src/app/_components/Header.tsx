@@ -17,8 +17,6 @@ function Header() {
       const res = await fetch("/Data/programs.json"); // ✅ fetch from /public
       const data = await res.json();
       const token = localStorage.getItem("token");
-      console.log(data);
-      // setPrograms(data.programs);
       const foundUser = data.users.find(
         (user: User) => user.token === token
       );

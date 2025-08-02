@@ -13,9 +13,8 @@ function ProgramsTable() {
   const [programFilter, setProgramFilter] = useState<Program[]>([]);
   const getAllProgram = async () => {
     try {
-      const res = await fetch("/Data/programs.json"); 
+      const res = await fetch("/Data/programs.json");
       const data = await res.json();
-      console.log(data.programs);
       setPrograms(data.programs);
       setProgramFilter(data.programs);
     } catch (error) {
@@ -25,8 +24,7 @@ function ProgramsTable() {
 
   // Filteration Function
   const filterationDataOfProgram = (value: string) => {
-    console.log("programs", programs);
-    const lastPrograms = programs?.filter((newPrograms) => {
+    const lastPrograms = programFilter?.filter((newPrograms) => {
       return (
         newPrograms.programName.toLowerCase().includes(value.toLowerCase()) ||
         newPrograms.status.toLowerCase().includes(value.toLowerCase()) ||
@@ -34,18 +32,7 @@ function ProgramsTable() {
         newPrograms.date.toLowerCase().includes(value)
       );
     });
-    console.log(lastPrograms);
     setPrograms(lastPrograms);
-    // setPrograms(
-    //   programs?.filter((newPrograms) => {
-    //     return (
-    //       newPrograms.programName.toLowerCase().includes(value.toLowerCase()) ||
-    //       newPrograms.status.toLowerCase().includes(value.toLowerCase()) ||
-    //       newPrograms.category.toLowerCase().includes(value.toLowerCase()) ||
-    //       newPrograms.date.includes(value)
-    //     );
-    //   })
-    // );
   };
 
   useEffect(() => {
@@ -53,7 +40,6 @@ function ProgramsTable() {
   }, []);
   return (
     <>
-      {/* <div className="flex flex-col items-end px-20 pt-4 pb-7 mt-5 max-w-full font-bold text-right bg-white rounded-2xl shadow-sm w-[1593px] max-md:px-5"> */}
       <div className="flex flex-col items-end bg-white px-10 py-7 my-5 rounded-lg shadow-md ">
         <div className="flex flex-col  ">
           <form>
@@ -71,7 +57,7 @@ function ProgramsTable() {
                     filterationDataOfProgram(e.target.value);
                   }}
                 >
-                  <option value="date" disabled selected>
+                  <option value="date" disabled>
                     التاريخ
                   </option>
                   {programFilter?.map((program) => (
@@ -96,7 +82,7 @@ function ProgramsTable() {
                     filterationDataOfProgram(e.target.value);
                   }}
                 >
-                  <option value="allPrograms" disabled selected>
+                  <option value="allPrograms" disabled>
                     جميع البرامج{" "}
                   </option>
                   {programFilter?.map((program) => (
@@ -118,7 +104,7 @@ function ProgramsTable() {
                     filterationDataOfProgram(e.target.value);
                   }}
                 >
-                  <option value="status" disabled selected>
+                  <option value="status" disabled >
                     نشطه
                   </option>
                   {programFilter?.map((program) => (
@@ -143,7 +129,7 @@ function ProgramsTable() {
                     filterationDataOfProgram(e.target.value);
                   }}
                 >
-                  <option value="category" disabled selected>
+                  <option value="category" disabled>
                     دورات تقنية
                   </option>
                   {programFilter?.map((program) => (
@@ -197,12 +183,12 @@ function ProgramsTable() {
                     <td>
                       <span
                         className={`px-4 py-1.5 text-white rounded-xl text-xs ${program.status === "مكتمل"
-                            ? "bg-green-400"
-                            : program.status === "قيد التنفيذ"
-                              ? "bg-blue-500"
-                              : program.status === "لم يبدأ بعد"
-                                ? "bg-gray-400"
-                                : "bg-red-500"
+                          ? "bg-green-400"
+                          : program.status === "قيد التنفيذ"
+                            ? "bg-blue-500"
+                            : program.status === "لم يبدأ بعد"
+                              ? "bg-gray-400"
+                              : "bg-red-500"
                           }`}
                       >
                         {program.status}

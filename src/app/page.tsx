@@ -3,8 +3,17 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+interface User {
+  id: number,
+  username: string,
+  email: string,
+  password: string,
+  isLogin: boolean,
+  token: string
+}
 export default function Home() {
   const [TogglePassword, setTogglePassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -15,14 +24,15 @@ export default function Home() {
 
   const handelSumbition = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // console.log(email, password);
+    setIsLoading(true);
     try {
       const res = await fetch("/Data/programs.json");
       const data = await res.json();
       // console.log(data);
+      setIsLoading(false);
 
       const foundUser = data.users.find(
-        (user: any) => user.email === email && user.password === password
+        (user: User) => user.email === email && user.password === password
       );
 
       // console.log(foundUser);
@@ -31,9 +41,10 @@ export default function Home() {
         localStorage.setItem("token", foundUser.token);
         myRoute.push("/dashboard");
       } else {
-        throw Error()
+        throw Error();
       }
     } catch (error) {
+      setIsLoading(false);
       setError("البريد الالكتروني او كلمه المرور غير صحيحة");
     }
   };
@@ -56,7 +67,7 @@ export default function Home() {
               />
             </div>
             <h2 className="text-secondary text-[clamp(.9rem,1.6vw,4rem)] font-semibold text-center my-4">
-              تسجيل دخول
+              {isLoading ? "برجاء الانتظار " : "تسجيل دخول"}
             </h2>
             {/* Email */}
             <div className="w-full relative overflow-hidden">

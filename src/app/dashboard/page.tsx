@@ -9,8 +9,8 @@ import SideBar from "../_components/SideBar";
 import { useState } from "react";
 
 function Dashboard() {
+    
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-
     const toggleDrawer = () => setIsDrawerOpen(!isDrawerOpen);
 
     return (
@@ -34,7 +34,7 @@ function Dashboard() {
 
                             className={`fixed inset-0 z-40 lg:hidden transition-opacity duration-300 ${isDrawerOpen ? "bg-black/50 pointer-events-auto" : "bg-transparent pointer-events-none"
                                 }`}
-                            onClick={toggleDrawer} // Close on overlay click
+                            onClick={toggleDrawer} 
                         >
                             <div
                                 className={`
@@ -42,7 +42,7 @@ function Dashboard() {
         transform transition-transform duration-300 ease-in-out
         ${isDrawerOpen ? 'translate-x-0' : '-translate-x-full'}
       `}
-                                onClick={(e) => e.stopPropagation()} // Prevent closing on inner click
+                                onClick={(e) => e.stopPropagation()} 
                             >
                                 <SideBar />
                             </div>

@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Loader from "./Loader";
 
 export default function ProtectedRoute({
   children,
@@ -24,7 +25,7 @@ export default function ProtectedRoute({
       {isAuthenticated ? (
         children
       ) : (
-        <div>Please log in to access this content.</div>
+        <div><Loader /></div>
       )}
     </>
   );
